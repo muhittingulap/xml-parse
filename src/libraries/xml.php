@@ -20,7 +20,7 @@ class xml extends config
                            ->getXmlArray();
 
         } catch (Exception $e) {
-                die($e->getMessage();
+                die($e->getMessage());
         }
 
         return $return;
