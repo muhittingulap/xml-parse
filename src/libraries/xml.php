@@ -12,12 +12,14 @@ class xml extends config
         parent::__construct();
     }
 
-    public function getArray()
+    public function getKeys()
     {
         try {
 
             $return = $this->load()
-                           ->getXmlArray();
+                           ->setXmlToArray()
+                           ->setXmlKeysArray()
+                           ->getXmlKeysArray();
 
         } catch (Exception $e) {
                 die($e->getMessage());

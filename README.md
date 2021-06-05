@@ -20,5 +20,22 @@ PHP-OOP Xml Parse
     include('vendor/autoload.php');
 
     $xml = new \MGXML\libraries\xml();
+    $xml->setUrl($url) // Xml url
+        ->setParentAttr("product"); // Example repeat parent attr
+
+```  
+## Config
+
+| Parametre        | Detail         |
+| ---------------- | -------------- |
+| setUrl           | Xml Url        |
+| setParentAttr    | Repeat parent attr |
+
+#### - getKeys
+
+```php
+
+<?php 
+$return = $xml->getKeys(); // Get array xml attr keys
 
 ```  
