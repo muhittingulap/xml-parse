@@ -25,14 +25,12 @@ class config
 
     protected function getXmlArray()
     {
-        $this->jsonArray = json_decode(json_encode($xml), true);
+        $this->jsonArray = json_decode(json_encode($this->xml), true);
         return $this->jsonArray;
     }
     protected function load()
     {
-        $₺his->context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
-               
-        $this->xml = file_get_contents($this->url, false, $₺his->context);
+        $this->xml = file_get_contents($this->url, false);
         $this->xml = simplexml_load_string($this->xml);
 
         return $this;
