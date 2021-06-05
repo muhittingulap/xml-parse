@@ -16,9 +16,8 @@ class xml extends config
     {
         try {
 
-            $return = $this->setUrl()
-                ->load()
-                ->getXmlArray();
+            $return = $this->load()
+                           ->getXmlArray();
 
         } catch (Exception $e) {
                 die($e->getMessage();

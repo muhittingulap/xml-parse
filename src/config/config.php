@@ -12,7 +12,7 @@ class config
 
     }
 
-    protected function setUrl($data = "")
+    public function setUrl($data = "")
     {
         $this->url = (string) $data;
         return $this;
