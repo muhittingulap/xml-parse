@@ -19,6 +19,6 @@ PHP-OOP Xml Parse
     <?php     
     include('vendor/autoload.php');
 
-    $xml = new \MGXML\libraries\transactions();
+    $xml = new \MGXML\libraries\xml();
 
 ```  
