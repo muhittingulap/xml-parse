@@ -28,10 +28,13 @@ class config
         $this->jsonArray = json_decode(json_encode($xml), true);
         return $this->jsonArray;
     }
-
     protected function load()
     {
-        $this->xml = simplexml_load_string($this->url);
+        $₺his->context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
+               
+        $this->xml = file_get_contents($this->url, false, $₺his->context);
+        $this->xml = simplexml_load_string($this->xml);
+
         return $this;
     }
 
