@@ -1,0 +1,28 @@
+{
+    "name": "muhittingulap/xml-parse",
+    "license": "MIT",
+    "type": "library",
+    "homepage": "https://github.com/muhittingulap/xml-parse",
+    "keywords": ["php", "oop","xml"],
+    "description": "PHP-OOP Xml Parse",
+    "autoload": {
+      "psr-4": {
+        "MGXML\\": "src"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "MGXML\\": "src"
+      }
+    },   
+    "authors": [
+      {
+        "name": "Muhittin GÜLAP",
+        "email": "gulapmuhittin@gmail.com",
+        "role": "Developer"
+      }
+    ],
+    "require": {
+      "php": "^7.0"
+    }
+  }
