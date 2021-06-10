@@ -28,4 +28,19 @@ class xml extends config
         return $return;
     }
 
+    public function getData($special=array())
+    {
+        try {
+
+            $return = $this->load()
+                           ->setXmlToArray()
+                           ->getXmlDataArray($special);
+
+        } catch (Exception $e) {
+                die($e->getMessage());
+        }
+
+        return $return;
+    }
+
 }

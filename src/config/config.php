@@ -1,5 +1,4 @@
 <?php
-
 namespace MGXML\Config;
 
 class config
@@ -11,6 +10,18 @@ class config
     public function __construct()
     {
 
+    }
+
+    public function slugify($str)
+    {
+        $str = str_replace(
+            ['ı', 'ğ', 'ö', 'ç', 'ş', 'ü', 'İ', 'Ğ', 'Ü', 'Ş', 'Ç', 'Ö'],
+            ['i', 'g', 'o', 'c', 's', 'u', 'I', 'G', 'U', 'S', 'C', 'O'],
+            $str);
+        $str = mb_strtolower($str);
+        $str = preg_replace('/[^a-z0-9]/', '-', $str);
+        $str = preg_replace('/-+/', '-', $str);
+        return trim($str, '-');
     }
 
     public function setParentAttr($data = "")
@@ -36,9 +47,13 @@ class config
         return (string) $this->xml;
     }
 
-    protected function getXmlDataArray()
+    protected function getXmlDataArray($special = array())
     {
-        return $this->jsonArray;
+        if (count($special) > 0) {
+            $this->setXmlDataArray($special);
+        }
+
+        return $this->jsonArray[$this->parentAttr];
     }
 
     protected function getXmlKeysArray()
@@ -51,9 +66,27 @@ class config
         $this->keysArray = array();
         if (@count($this->jsonArray[$this->parentAttr] > 0)) {
             foreach ($this->jsonArray[$this->parentAttr] as $key => $value) {
-                if (@count($this->jsonArray[$this->parentAttr] > 0)) {
+                if (@count($value) > 0) {
                     foreach ($value as $k => $v) {
                         $this->keysArray[$k] = $k;
+                    }
+                }
+            }
+        }
+        return $this;
+    }
+
+    private function setXmlDataArray($special = array())
+    {
+        if (@count($special) > 0) {
+            if (@count($this->jsonArray[$this->parentAttr] > 0)) {
+                foreach ($this->jsonArray[$this->parentAttr] as $key => $value) {
+                    if (@count($value) > 0) {
+                        foreach ($value as $k => $v) {
+                            if (array_search($k, $special) === false) {
+                                unset($this->jsonArray[$this->parentAttr][$key][$k]);
+                            }
+                        }
                     }
                 }
             }
