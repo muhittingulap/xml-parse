@@ -99,7 +99,7 @@ class config
         ini_set('memory_limit', '256M');
 
         $this->xml = file_get_contents($this->url, false);
-        $this->xml = simplexml_load_string($this->xml);
+        $this->xml = simplexml_load_string($this->xml,null,LIBXML_NOCDATA);
 
         return $this;
     }
